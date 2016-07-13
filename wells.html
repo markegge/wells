@@ -8,15 +8,14 @@
     	  margin: 0;
     	  padding: 0;
     	  height: 100%;
+        background-color: white;
     	}
       #layers {
         padding: 5px;
         position: absolute;
         top: 10px;
         right: 10px;
-      }
-      #loading, #layers {
-        background-color: #fff; 
+        background-color: white;
       }
   	</style>
 
@@ -37,7 +36,7 @@
 
     <script type="text/javascript">
       // draw "loading" pill wheel
-      for(var i=0, html; i<12; i++) html += "<rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#00b2ff' opacity='" + (i+1)/12 + "' transform='rotate(" + i*30 + " 50 50) translate(0 -30)'></rect>"; 
+      for(var i=0, html; i<12; i++) html += "<rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#00b2ff' transform='rotate(" + i*30 + " 50 50) translate(0 -30)'><animate attributeName='opacity' from='1' to='0' dur='1s' begin='" + (i+1)/12 + "s' repeatCount='indefinite'/></rect>"; 
       document.getElementById('loading').innerHTML = '<svg style="position: absolute; top: 50%; left: 50%;" width="120px" height="120px" viewBox="0 0 100 100">' + html + '</svg>';
 
       /**
