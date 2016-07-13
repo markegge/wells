@@ -228,6 +228,7 @@
         var mapDiv = document.getElementById('map-div');
         map = new google.maps.Map(mapDiv, mapOptions);
         map.addListener('bounds_changed', resize, false);
+        window.addEventListener('resize', function () {  google.maps.event.trigger(map, 'resize') }, false);
 
         // initialize the canvas layer
         var canvasLayerOptions = {
