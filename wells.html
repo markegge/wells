@@ -182,7 +182,6 @@
                                             0,           scale * (-2/h),    0,    0,
                                             0,                        0,    0,    0,
                       -1 + (2* t.x * scale)/w, 1 + (-2 * t.y * scale)/h,    0,    1]);
-        drawPoints();
       }
 
       /**
@@ -224,12 +223,11 @@
         var mapOptions = {
           zoom: 5,
           center: new google.maps.LatLng(39.3, -95.8),
-          mapTypeControl: false
+          mapTypeControl: true
         };
         var mapDiv = document.getElementById('map-div');
         map = new google.maps.Map(mapDiv, mapOptions);
         map.addListener('bounds_changed', resize, false);
-        window.addEventListener('resize', function () {  google.maps.event.trigger(map, 'resize') }, false);
 
         // initialize the canvas layer
         var canvasLayerOptions = {
