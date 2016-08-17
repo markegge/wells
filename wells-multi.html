@@ -290,10 +290,14 @@
           center: new google.maps.LatLng(39.3, -95.8),
           mapTypeControl: true
         };
+        var styledMapType = new google.maps.StyledMapType(
+          [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]);
+
         var mapDiv = document.getElementById('map-div');
         map = new google.maps.Map(mapDiv, mapOptions);
         map.addListener('bounds_changed', resize, false);
-
+        map.mapTypes.set('styled_map', styledMapType);
+        map.setMapTypeId('styled_map');
         // initialize the canvas layer
         var canvasLayerOptions = {
           map: map,
@@ -305,7 +309,7 @@
 
         // initialize the TimeSlider
         var timeSliderOptions = {
-          startTime: new Date(1900,00,01).getTime(), // JavaScript counts months from zero. Date constructor defaults to local time
+          startTime: new Date(1880,00,01).getTime(), // JavaScript counts months from zero. Date constructor defaults to local time
           endTime: new Date(2016,05,01).getTime(),
           dwellAnimationTime: 2 * 1000,
           increment: 120*24*60*60*1000,
